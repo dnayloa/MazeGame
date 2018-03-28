@@ -2,6 +2,9 @@ package com.dnayloa.gameObjects;
 
 import java.awt.*;
 
+/**
+ * Created by dnayloa 28/03/18
+ */
 public abstract class GameObject {
 
     int x,y,width,height;
