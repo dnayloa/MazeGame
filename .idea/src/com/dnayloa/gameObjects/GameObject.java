@@ -1,29 +1,17 @@
 package com.dnayloa.gameObjects;
-import javax.swing.*;
+
 import java.awt.*;
 
-/**
- * Created by dnayloa 28/03/2018
- */
-public abstract class GameObject extends JComponent {
-    private int x,y,width,height;
-    private String ID, name;
+public abstract class GameObject {
 
-    public GameObject(int x, int y, int width, int height, String ID, String name) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.ID = ID;
-        this.name = name;
-    }
+    int x,y,width,height;
+    String name,id;
 
     public abstract void update();
 
     public abstract void paintComponent(Graphics g);
 
-    //GETTER AND SETTERS
-    @Override
+    //GETTER AND SETTER
     public int getX() {
         return x;
     }
@@ -32,7 +20,6 @@ public abstract class GameObject extends JComponent {
         this.x = x;
     }
 
-    @Override
     public int getY() {
         return y;
     }
@@ -41,7 +28,6 @@ public abstract class GameObject extends JComponent {
         this.y = y;
     }
 
-    @Override
     public int getWidth() {
         return width;
     }
@@ -50,7 +36,6 @@ public abstract class GameObject extends JComponent {
         this.width = width;
     }
 
-    @Override
     public int getHeight() {
         return height;
     }
@@ -59,21 +44,19 @@ public abstract class GameObject extends JComponent {
         this.height = height;
     }
 
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
