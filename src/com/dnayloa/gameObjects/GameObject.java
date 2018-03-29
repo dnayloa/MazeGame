@@ -7,8 +7,9 @@ import java.awt.*;
  * Created by dnayloa 29/03/2018
  */
 public abstract class GameObject extends JComponent{
-    int x,y,width,height;
-    String name, id;
+    int x,y,width,height, id;
+    String name;
+    Color color;
 
     public abstract void update();
 
@@ -62,11 +63,19 @@ public abstract class GameObject extends JComponent{
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
