@@ -1,20 +1,22 @@
 package com.dnayloa.gameObjects;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by dnayloa 28/03/18.
+ * Created by dnayloa 29/03/2018
  */
-public abstract class GameObject {
-
+public abstract class GameObject extends JComponent{
     int x,y,width,height;
-    String name,id;
+    String name, id;
 
     public abstract void update();
 
     public abstract void paintComponent(Graphics g);
 
-    //GETTER AND SETTER
+    //GETTERS AND SETTERS
+
+    @Override
     public int getX() {
         return x;
     }
@@ -23,6 +25,7 @@ public abstract class GameObject {
         this.x = x;
     }
 
+    @Override
     public int getY() {
         return y;
     }
@@ -31,6 +34,7 @@ public abstract class GameObject {
         this.y = y;
     }
 
+    @Override
     public int getWidth() {
         return width;
     }
@@ -39,6 +43,7 @@ public abstract class GameObject {
         this.width = width;
     }
 
+    @Override
     public int getHeight() {
         return height;
     }
@@ -47,10 +52,12 @@ public abstract class GameObject {
         this.height = height;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
