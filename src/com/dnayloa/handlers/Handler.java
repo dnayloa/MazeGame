@@ -12,7 +12,7 @@ public class Handler extends ArrayList<GameObject> {
         new ArrayList<GameObject>();
     }
 
-    public void update(){
+    public void tick(){
         Iterator<GameObject> it = this.iterator();
         while (it.hasNext()){
             GameObject temp = it.next();
@@ -20,11 +20,13 @@ public class Handler extends ArrayList<GameObject> {
         }
     }
 
-    public void paintComponent(Graphics g){
+    public void render(Graphics g){
         Iterator<GameObject> it = this.iterator();
         while (it.hasNext()){
             GameObject temp = it.next();
-            temp.paintComponent(g);
+            if(temp.getX() > 0 || temp.getX() < 800 || temp.getY() > 0 || temp.getY() < 600  ) {
+                temp.paintComponent(g);
+            }
         }
     }
 }
