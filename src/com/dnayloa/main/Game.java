@@ -1,8 +1,10 @@
 package com.dnayloa.main;
 import com.dnayloa.gameObjects.Player;
+import com.dnayloa.gameObjects.Square;
 import com.dnayloa.gameObjects.Text;
 import com.dnayloa.gameObjects.Wall;
 import com.dnayloa.handlers.Handler;
+import com.dnayloa.handlers.MazeHandler;
 import com.dnayloa.window.Window;
 
 import java.awt.*;
@@ -13,12 +15,12 @@ public class Game extends Canvas implements Runnable {
 
     public static final long serialVersionUID = 1L;
 
+
     private boolean isRunning = false;
     private Thread th;
     private Handler handler;
-    //private Text frameCount= new Text(10,10,"");
+    private Text frameCount= new Text(10,15,"");
     private Window window;
-
     private String version = "Alpha 0.01";
 
     public Game(){
@@ -30,6 +32,7 @@ public class Game extends Canvas implements Runnable {
     public void start(){
         isRunning = true;
         handler = new Handler();
+        handler.add(frameCount);
         th = new Thread(this);
         th.start();                         //calls the run method below
     }
@@ -55,7 +58,7 @@ public class Game extends Canvas implements Runnable {
              frames++;
 
              if(System.currentTimeMillis() - timer > 1000){
-                 System.out.println("FPS: " + Integer.toString(frames));
+                 frameCount.setText("FPS: " + frames);
                  timer += 1000;
                  frames = 0;
              }
