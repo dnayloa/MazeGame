@@ -19,11 +19,13 @@ public class MazeHandler implements Runnable {
     private int size;
     private boolean loaded = false;
     private int level;
+    private Handler handler;
     Thread th;
 
 
-    public MazeHandler(int level){
+    public MazeHandler(int level, Handler handler){
         this.level = level;
+        this.handler = handler;
         start();
     }
 
@@ -50,6 +52,7 @@ public class MazeHandler implements Runnable {
         } catch (IOException f){
             f.printStackTrace();
         }
+        populateHandler(handler,mazeArray);
         stop();
     }
 
@@ -109,6 +112,7 @@ public class MazeHandler implements Runnable {
             }
         }
         handler.remove(handler.getLoadingScreen());
+        handler.add(handler.getFrameCount());
     }
 
     //GETTER AND SETTERS

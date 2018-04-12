@@ -13,9 +13,9 @@ public class Game extends Canvas implements Runnable {
     private boolean isRunning = false;
     private Thread th;
     private Handler handler;
-    private Text frameCount= new Text(10,15,"");
     private Window window;
     private String version = "Alpha 0.01";
+    private Renderer renderer = new Renderer(this);
 
     public Game(){
         window = new Window(500,500,"The Maze Game: " + version ,this);
@@ -25,7 +25,6 @@ public class Game extends Canvas implements Runnable {
     public void start(){
         isRunning = true;
         handler = new Handler();
-        handler.add(frameCount);
         th = new Thread(this);
         th.start();                         //calls the run method below
 
@@ -52,7 +51,7 @@ public class Game extends Canvas implements Runnable {
              frames++;
 
              if(System.currentTimeMillis() - timer > 1000){
-                 frameCount.setText("FPS: " + frames);
+                 handler.getFrameCount().setText("FPS: " + frames);
                  timer += 1000;
                  frames = 0;
              }

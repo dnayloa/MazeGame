@@ -13,13 +13,14 @@ public class Handler extends ArrayList<GameObject> {
     private int level = 1;
     private Square background = new Square(0,0,500,500, Color.white);
     private Text loadingScreen = new Text(20,20, "Loading...");
+    private Text frameCount= new Text(10,15,"");
 
     public Handler(){
         new ArrayList<GameObject>();
         this.add(background);
         this.add(loadingScreen);
-        mh = new MazeHandler(level);
-        mh.populateHandler(this, mh.getMazeArray());
+        mh = new MazeHandler(level, this);
+
     }
 
     public void tick(){
@@ -74,5 +75,13 @@ public class Handler extends ArrayList<GameObject> {
 
     public void setLoadingScreen(Text loadingScreen) {
         this.loadingScreen = loadingScreen;
+    }
+
+    public Text getFrameCount() {
+        return frameCount;
+    }
+
+    public void setFrameCount(Text frameCount) {
+        this.frameCount = frameCount;
     }
 }
