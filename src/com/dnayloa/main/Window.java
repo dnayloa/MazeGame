@@ -1,4 +1,4 @@
-package com.dnayloa.window;
+package com.dnayloa.main;
 
 import com.dnayloa.main.Game;
 

@@ -1,16 +1,19 @@
-package com.dnayloa.gameObjects;
+package com.dnayloa.gameObjects.collisionObjects;
+
+import com.dnayloa.gameObjects.GameObject;
 
 import java.awt.*;
 
-public class Player extends GameObject {
+/**
+ * Created by drewnaylor on 05/04/2018.
+ */
+public class Origin extends GameObject {
 
-    public Player(int x, int y, int width, int height){
+    public Origin(int x, int y, int width, int height){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        id = 9;
-        name = "Player";
     }
 
     @Override
@@ -20,7 +23,7 @@ public class Player extends GameObject {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.green);
         g.fillOval(x,y,width,height);
     }
 }

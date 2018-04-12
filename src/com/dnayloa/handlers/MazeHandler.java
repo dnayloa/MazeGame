@@ -1,27 +1,41 @@
 package com.dnayloa.handlers;
 
-import com.dnayloa.gameObjects.Origin;
-import com.dnayloa.gameObjects.Wall;
+import com.dnayloa.gameObjects.collisionObjects.Origin;
+import com.dnayloa.gameObjects.collisionObjects.Wall;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * Created by drewnaylor on 05/04/2018.
  */
-public class MazeHandler {
+public class MazeHandler implements Runnable {
 
     private String [][] mazeArray;
     private int mazeSize;
     private String title;
     private int size;
+    private boolean loaded = false;
+    private int level;
+    Thread th;
+
 
     public MazeHandler(int level){
+        this.level = level;
+        start();
+    }
+
+    public void start(){
+        th = new Thread(this);
+        th.start();
+    }
+
+    @Override
+    public void run() {
         try {
-            FileReader fileReader = new FileReader("maze" + level + ".txt");
+            FileReader fileReader = new FileReader("src/res/maze" + level + ".txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             title = bufferedReader.readLine();
             String [] tempSizeArray = bufferedReader.readLine().split(" ");
@@ -36,8 +50,22 @@ public class MazeHandler {
         } catch (IOException f){
             f.printStackTrace();
         }
+        stop();
     }
 
+    public void stop(){
+        loaded = true;
+        try {
+            th.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Printing array for debugging purposes
+     * @param mazeArray
+     */
     private void printArray(String[][]mazeArray){
         for(int i = 0; i < mazeArray.length; i++){
             String line = "";
@@ -48,6 +76,12 @@ public class MazeHandler {
         }
     }
 
+    /**
+     * Populating mazeArray with Strings from the text file
+     * @param mazeArray
+     * @param bufferedReader
+     * @throws IOException
+     */
     private void populateArray(String[][]mazeArray, BufferedReader bufferedReader)  throws IOException {
         int i = 0;
         String temp = bufferedReader.readLine();
@@ -58,6 +92,11 @@ public class MazeHandler {
         }
     }
 
+    /**
+     * Populating the handler from data in the mazeArray
+     * @param handler
+     * @param mazeArray
+     */
     public void populateHandler(Handler handler, String[][] mazeArray){
         for (int i = 0; i < mazeArray.length; i++){
             for(int j = 0; j < mazeArray[i].length; j++){
@@ -69,8 +108,10 @@ public class MazeHandler {
                 }
             }
         }
+        handler.remove(handler.getLoadingScreen());
     }
 
+    //GETTER AND SETTERS
 
     public String[][] getMazeArray() {
         return mazeArray;
@@ -103,5 +144,14 @@ public class MazeHandler {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public boolean isLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
+
 
 }

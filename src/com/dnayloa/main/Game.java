@@ -1,7 +1,6 @@
 package com.dnayloa.main;
 import com.dnayloa.gameObjects.Text;
 import com.dnayloa.handlers.Handler;
-import com.dnayloa.window.Window;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -29,6 +28,7 @@ public class Game extends Canvas implements Runnable {
         handler.add(frameCount);
         th = new Thread(this);
         th.start();                         //calls the run method below
+
     }
 
     @Override

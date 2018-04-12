@@ -1,4 +1,4 @@
-package com.dnayloa.gameObjects;
+package com.dnayloa.gameObjects.collisionObjects;
 
 /**
  * Created by drewnaylor on 05/04/2018.

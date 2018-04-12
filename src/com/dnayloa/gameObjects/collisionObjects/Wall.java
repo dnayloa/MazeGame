@@ -1,6 +1,12 @@
-package com.dnayloa.gameObjects;
+package com.dnayloa.gameObjects.collisionObjects;
+
+import com.dnayloa.gameObjects.GameObject;
 
 import java.awt.*;
+
+/**
+ * Class of the wall objects in the maze
+ */
 
 public class Wall extends GameObject {
 
@@ -25,5 +31,16 @@ public class Wall extends GameObject {
     public void paintComponent(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(x,y,width,height);
+    }
+
+    //GETTER AND SETTERS
+
+
+    public Rectangle getCollider() {
+        return collider;
+    }
+
+    public void setCollider(Rectangle collider) {
+        this.collider = collider;
     }
 }

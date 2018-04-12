@@ -7,9 +7,9 @@ import java.awt.*;
  * Created by dnayloa 29/03/2018
  */
 public abstract class GameObject extends JComponent{
-    int x,y,width,height, id;
-    String name;
-    Color color;
+    protected int x,y,width,height, id;
+    protected String name;
+    protected Color color;
 
     public abstract void update();
 
