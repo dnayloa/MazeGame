@@ -1,5 +1,6 @@
 package com.dnayloa.handlers;
 
+import com.dnayloa.gameObjects.Origin;
 import com.dnayloa.gameObjects.Wall;
 
 import java.io.BufferedReader;
@@ -63,6 +64,9 @@ public class MazeHandler {
                 if(mazeArray[i][j].equals("#"))
                     //@TODO Add fixed values for the wall sizes to make sure they always fit the screen.
                     handler.add(new Wall(j * 40 + 10, i  * 40, 40,40));
+                else if(mazeArray[i][j].equals("o")){
+                    handler.add(new Origin(j * 40 + 10, i  * 40, 40,40));
+                }
             }
         }
     }

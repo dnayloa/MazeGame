@@ -1,10 +1,6 @@
 package com.dnayloa.main;
-import com.dnayloa.gameObjects.Player;
-import com.dnayloa.gameObjects.Square;
 import com.dnayloa.gameObjects.Text;
-import com.dnayloa.gameObjects.Wall;
 import com.dnayloa.handlers.Handler;
-import com.dnayloa.handlers.MazeHandler;
 import com.dnayloa.window.Window;
 
 import java.awt.*;
@@ -14,7 +10,6 @@ import java.awt.image.BufferStrategy;
 public class Game extends Canvas implements Runnable {
 
     public static final long serialVersionUID = 1L;
-
 
     private boolean isRunning = false;
     private Thread th;
@@ -27,7 +22,6 @@ public class Game extends Canvas implements Runnable {
         window = new Window(500,500,"The Maze Game: " + version ,this);
         start();
     }
-
 
     public void start(){
         isRunning = true;
